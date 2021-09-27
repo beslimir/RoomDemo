@@ -1,8 +1,7 @@
-package com.example.roomdemo.db
+package com.example.roomdemo
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.roomdemo.MainViewModel
 
 class MainViewModelFactory(val mainRepository: MainRepository): ViewModelProvider.Factory {
 

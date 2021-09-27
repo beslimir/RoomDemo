@@ -7,7 +7,8 @@ import androidx.room.PrimaryKey
 data class Person(
     var name: String,
     var lastName: String,
-    var years: Int
+    var years: Int,
+    var brothersSisters: List<String>?
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

@@ -1,22 +1,23 @@
 package com.example.roomdemo
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.roomdemo.db.MainDatabase
-import com.example.roomdemo.db.MainRepository
-import com.example.roomdemo.db.MainViewModelFactory
 import com.example.roomdemo.db.Person
+import com.facebook.stetho.Stetho
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var mainViewModel: MainViewModel
+    var mainList = listOf("Pipo", "Fido")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        Stetho.initializeWithDefaults(this)
 
         val mainRepository = MainRepository(MainDatabase(this))
         val mainViewModelFactory = MainViewModelFactory(mainRepository)
@@ -42,7 +43,8 @@ class MainActivity : AppCompatActivity() {
                 Person(
                     etName.text.toString(),
                     etLastName.text.toString(),
-                    etYears.text.toString().toInt()
+                    etYears.text.toString().toInt(),
+                    mainList
                 )
             )
 

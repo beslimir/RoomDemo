@@ -1,4 +1,7 @@
-package com.example.roomdemo.db
+package com.example.roomdemo
+
+import com.example.roomdemo.db.MainDatabase
+import com.example.roomdemo.db.Person
 
 class MainRepository(val mainDb: MainDatabase) {
 

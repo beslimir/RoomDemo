@@ -3,8 +3,10 @@ package com.example.roomdemo
 import androidx.room.TypeConverter
 import com.example.roomdemo.db.FootballClub
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
+
 
 class Converters {
 

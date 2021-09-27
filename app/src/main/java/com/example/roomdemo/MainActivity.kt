@@ -3,6 +3,7 @@ package com.example.roomdemo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.roomdemo.db.FootballClub
 import com.example.roomdemo.db.MainDatabase
 import com.example.roomdemo.db.Person
 import com.facebook.stetho.Stetho
@@ -44,7 +45,9 @@ class MainActivity : AppCompatActivity() {
                     etName.text.toString(),
                     etLastName.text.toString(),
                     etYears.text.toString().toInt(),
-                    mainList
+                    mainList,
+                    FootballClub("FC Bayern Munich", 1900, "Germany"),
+                    "80230, Glamoc"
                 )
             )
 

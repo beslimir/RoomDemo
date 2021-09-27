@@ -8,7 +8,9 @@ data class Person(
     var name: String,
     var lastName: String,
     var years: Int,
-    var brothersSisters: List<String>?
+    val brothersSisters: List<String>?,
+    val footballClub: FootballClub,
+    val city: Any
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

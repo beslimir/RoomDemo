@@ -22,7 +22,6 @@ class MainViewModel(val mainRepository: MainRepository): ViewModel() {
         Log.d(LOG_TAG, "updatePerson thread: ${Thread.currentThread().name}")
     }
 
-    //TODO: Implement with differUtil
     fun listAllPeople() = mainRepository.listAllPeople()
 
 

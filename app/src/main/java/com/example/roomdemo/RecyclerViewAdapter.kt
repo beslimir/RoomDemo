@@ -18,8 +18,8 @@ class RecyclerViewAdapter(var items: List<Person>): RecyclerView.Adapter<Recycle
     }
 
     override fun onBindViewHolder(holder: PersonViewHolder, position: Int) {
-//        val myPerson = differ.currentList[position]
-        val myPerson = items[position]
+        val myPerson = differ.currentList[position]
+//        val myPerson = items[position]
         holder.itemView.apply {
             tvName.text = myPerson.name
             tvLastName.text = myPerson.lastName
@@ -30,10 +30,9 @@ class RecyclerViewAdapter(var items: List<Person>): RecyclerView.Adapter<Recycle
         }
     }
 
-    override fun getItemCount() = items.size
+    override fun getItemCount() = differ.currentList.size /* items.size */
 
 
-    //TODO
     //use diff callbacks instead of onNotifyDataSetChanged()
     private val differCallback = object: DiffUtil.ItemCallback<Person>() {
 

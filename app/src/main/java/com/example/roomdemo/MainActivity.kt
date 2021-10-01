@@ -64,10 +64,10 @@ class MainActivity : AppCompatActivity() {
             showToast(this@MainActivity, "Successfully inserted")
         }
 
-        //TODO: Implement with differUtil
         mainViewModel.listAllPeople().observe(this, Observer {
-            mainAdapter.items = it
-            mainAdapter.notifyDataSetChanged()
+            mainAdapter.differ.submitList(it)
+//            mainAdapter.items = it
+//            mainAdapter.notifyDataSetChanged()
         })
 
         //TODO: Write code to delete a user

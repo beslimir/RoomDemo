@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         //TODO: Fix crash: Incorrect list size
-        
+
         /* Delete recycler view items (onItemClick -> Button delete press; OnItemLongClickListener) */
         bDelete.setOnClickListener {
             val position = mainAdapter.getItemPosition()!!
@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity,
                 "Person ${mainAdapter.differ.currentList[position].name} deleted", Toast.LENGTH_SHORT).show()
         }
+        
 
         mainAdapter.setOnItemLongClickListener { person ->
             val position = mainAdapter.getItemPosition()!!

@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.roomdemo.db.Person
 import kotlinx.android.synthetic.main.item_list.view.*
 
-class RecyclerViewAdapter(var items: List<Person>): RecyclerView.Adapter<RecyclerViewAdapter.PersonViewHolder>() {
+class RecyclerViewAdapter :
+    RecyclerView.Adapter<RecyclerViewAdapter.PersonViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
         return PersonViewHolder(
@@ -26,7 +27,23 @@ class RecyclerViewAdapter(var items: List<Person>): RecyclerView.Adapter<Recycle
             tvYears.text = myPerson.years.toString()
             tvCity.text = myPerson.city.toString()
             tvBrothersSisters.text = myPerson.brothersSisters.toString()
-            tvFootballClub.text = "${myPerson.footballClub.clubName}\n${myPerson.footballClub.founded}\n${myPerson.footballClub.country}"
+            tvFootballClub.text = "${myPerson.footballClub.clubName}\n" +
+                    "${myPerson.footballClub.founded}\n${myPerson.footballClub.country}"
+
+            setOnClickListener {
+                getItemPosition = position
+                onItemClickListener?.let {
+                    it(myPerson)
+                }
+            }
+
+            setOnLongClickListener {
+                onItemLongClickListener?.let {
+                    it(myPerson)
+                }
+                true
+            }
+
         }
     }
 
@@ -34,7 +51,7 @@ class RecyclerViewAdapter(var items: List<Person>): RecyclerView.Adapter<Recycle
 
 
     //use diff callbacks instead of onNotifyDataSetChanged()
-    private val differCallback = object: DiffUtil.ItemCallback<Person>() {
+    private val differCallback = object : DiffUtil.ItemCallback<Person>() {
 
         override fun areItemsTheSame(oldItem: Person, newItem: Person): Boolean {
             return oldItem.id == newItem.id
@@ -47,6 +64,27 @@ class RecyclerViewAdapter(var items: List<Person>): RecyclerView.Adapter<Recycle
 
     val differ = AsyncListDiffer(this, differCallback)
 
-    inner class PersonViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+    //get position of recyclerView Item
+    private var getItemPosition: Int? = null
+
+    fun getItemPosition(): Int? {
+        return getItemPosition
+    }
+
+    inner class PersonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    //create onItemClickListener
+    private var onItemClickListener: ((Person) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (Person) -> Unit) {
+        onItemClickListener = listener
+    }
+
+    //create onItemLongClickListener
+    private var onItemLongClickListener: ((Person) -> Unit)? = null
+
+    fun setOnItemLongClickListener(listener: (Person) -> Unit) {
+        onItemLongClickListener = listener
+    }
 
 }

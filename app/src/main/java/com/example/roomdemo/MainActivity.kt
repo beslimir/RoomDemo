@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity,
                 "Person ${mainAdapter.differ.currentList[position].name} deleted", Toast.LENGTH_SHORT).show()
         }
-        
+
 
         mainAdapter.setOnItemLongClickListener { person ->
             val position = mainAdapter.getItemPosition()!!

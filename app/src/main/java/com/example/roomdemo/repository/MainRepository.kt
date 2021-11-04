@@ -1,4 +1,4 @@
-package com.example.roomdemo
+package com.example.roomdemo.repository
 
 import com.example.roomdemo.db.MainDatabase
 import com.example.roomdemo.db.Person

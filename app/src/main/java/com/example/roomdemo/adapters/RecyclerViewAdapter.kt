@@ -1,11 +1,13 @@
-package com.example.roomdemo
+package com.example.roomdemo.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.roomdemo.R
 import com.example.roomdemo.db.Person
 import kotlinx.android.synthetic.main.item_list.view.*
 
@@ -31,9 +33,9 @@ class RecyclerViewAdapter :
                     "${myPerson.footballClub.founded}\n${myPerson.footballClub.country}"
 
             setOnClickListener {
-                getItemPosition = position
                 onItemClickListener?.let {
                     it(myPerson)
+                    getItemPosition = holder.adapterPosition
                 }
             }
 

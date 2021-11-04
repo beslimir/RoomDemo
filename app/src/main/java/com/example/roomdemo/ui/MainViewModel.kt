@@ -1,11 +1,12 @@
-package com.example.roomdemo
+package com.example.roomdemo.ui
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.roomdemo.Constants.Companion.LOG_TAG
+import com.example.roomdemo.util.Constants.Companion.LOG_TAG
 import com.example.roomdemo.db.Person
+import com.example.roomdemo.repository.MainRepository
 import kotlinx.coroutines.launch
 
 class MainViewModel(val mainRepository: MainRepository) : ViewModel() {

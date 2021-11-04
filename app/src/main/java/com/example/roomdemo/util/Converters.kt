@@ -1,4 +1,4 @@
-package com.example.roomdemo
+package com.example.roomdemo.util
 
 import androidx.room.TypeConverter
 import com.example.roomdemo.db.FootballClub

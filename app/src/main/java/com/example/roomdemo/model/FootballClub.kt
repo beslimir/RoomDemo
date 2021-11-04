@@ -1,4 +1,4 @@
-package com.example.roomdemo.db
+package com.example.roomdemo.model
 
 data class FootballClub(
     val clubName: String,

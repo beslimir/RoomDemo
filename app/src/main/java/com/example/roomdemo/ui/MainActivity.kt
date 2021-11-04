@@ -9,11 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roomdemo.*
 import com.example.roomdemo.adapters.RecyclerViewAdapter
-import com.example.roomdemo.util.Constants.Companion.LOG_TAG
-import com.example.roomdemo.db.FootballClub
+import com.example.roomdemo.model.FootballClub
 import com.example.roomdemo.db.MainDatabase
-import com.example.roomdemo.db.Person
+import com.example.roomdemo.model.Person
 import com.example.roomdemo.repository.MainRepository
+import com.example.roomdemo.util.Constants.Companion.LOG_TAG
+import com.example.roomdemo.view_model.MainViewModel
+import com.example.roomdemo.view_model.MainViewModelFactory
 import com.facebook.stetho.Stetho
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -26,8 +28,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        //TODO: Fix list initialisation on app start
 
         Stetho.initializeWithDefaults(this)
 
@@ -81,15 +81,20 @@ class MainActivity : AppCompatActivity() {
         bDelete.setOnClickListener {
             val position = mainAdapter.getItemPosition()!!
             mainViewModel.deletePerson(mainAdapter.differ.currentList[position])
-            Toast.makeText(this@MainActivity,
-                "Person ${mainAdapter.differ.currentList[position].name} deleted", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this@MainActivity,
+                "Person ${mainAdapter.differ.currentList[position].name} deleted",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
 
         mainAdapter.setOnItemLongClickListener { person ->
             mainViewModel.deletePerson(person)
-            Toast.makeText(this@MainActivity,
-                "Person ${person.name} deleted", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this@MainActivity,
+                "Person ${person.name} deleted", Toast.LENGTH_SHORT
+            ).show()
         }
 
         mainAdapter.setOnItemClickListener { person ->

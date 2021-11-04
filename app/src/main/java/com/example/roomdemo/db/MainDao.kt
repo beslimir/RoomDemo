@@ -2,6 +2,7 @@ package com.example.roomdemo.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.roomdemo.model.Person
 
 @Dao
 interface MainDao {

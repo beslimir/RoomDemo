@@ -1,6 +1,5 @@
 package com.example.roomdemo.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +7,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomdemo.R
-import com.example.roomdemo.db.Person
+import com.example.roomdemo.model.Person
 import kotlinx.android.synthetic.main.item_list.view.*
 
 class RecyclerViewAdapter :
@@ -22,7 +21,6 @@ class RecyclerViewAdapter :
 
     override fun onBindViewHolder(holder: PersonViewHolder, position: Int) {
         val myPerson = differ.currentList[position]
-//        val myPerson = items[position]
         holder.itemView.apply {
             tvName.text = myPerson.name
             tvLastName.text = myPerson.lastName
@@ -73,8 +71,6 @@ class RecyclerViewAdapter :
         return getItemPosition
     }
 
-    inner class PersonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
     //create onItemClickListener
     private var onItemClickListener: ((Person) -> Unit)? = null
 
@@ -88,5 +84,8 @@ class RecyclerViewAdapter :
     fun setOnItemLongClickListener(listener: (Person) -> Unit) {
         onItemLongClickListener = listener
     }
+
+
+    inner class PersonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 }
